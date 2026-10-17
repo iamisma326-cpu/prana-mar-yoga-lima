@@ -1,0 +1,71 @@
+---
+const testimonials = [
+  {
+    quote:
+      'Llegué con dolor lumbar crónico por trabajar 10 horas frente a la laptop en San Isidro. Después de tres meses combinando Hatha con Mateo y Yin los jueves, mi espalda y mi calidad de sueño son otras.',
+    author: 'Mariana Llosa',
+    context: 'Arquitecta · Practica hace 8 meses',
+    highlight: 'Hatha & Yin Yoga',
+  },
+  {
+    quote:
+      'El estudio tiene una magia difícil de explicar en Lima. Entras por el zaguán de madera en Barranco, hueles el palo santo suave y escuchas los pájaros del patio. Nunca te sientes en un gimnasio masivo.',
+    author: 'Rodrigo Ferreyros',
+    context: 'Fotógrafo · Vecino de Barranco',
+    highlight: 'Vinyasa Matutino',
+  },
+  {
+    quote:
+      'Los baños de sonido de los sábados con Camila se han vuelto mi ritual sagrado de fin de semana. La calidez con la que te reciben con té de muña caliente al terminar hace toda la diferencia.',
+    author: 'Lucía Wiesse',
+    context: 'Editora · Viene desde Miraflores',
+    highlight: 'Sonoterapia & Pranayama',
+  },
+];
+---
+
+<section id="testimonios" class="py-24 md:py-32 overflow-hidden">
+  <div class="editorial-container">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <div class="max-w-2xl reveal-up">
+        <span class="eyebrow">Voces de la Comunidad</span>
+        <h2 class="mt-3 font-serif text-4xl sm:text-5xl text-ink-900 leading-[1.1]">
+          Historias reales de quienes <span class="italic font-normal text-terracotta-600">respiran con nosotros</span>.
+        </h2>
+      </div>
+      <div class="reveal-up flex items-center gap-3 bg-sand-100 border border-sand-300 px-5 py-3 rounded-full">
+        <div class="flex text-terracotta-500" aria-hidden="true">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <span class="text-xs font-medium text-ink-800">
+          <strong>4.9 / 5</strong> en Google Maps (180+ reseñas en Lima)
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <blockquote class="reveal-card bg-sand-100/75 border border-sand-300/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="rounded-full bg-sand-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-terracotta-700">
+                {t.highlight}
+              </span>
+              <svg class="w-8 h-8 text-terracotta-400/50" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+            </div>
+            <p class="font-serif text-xl sm:text-2xl text-ink-900 leading-relaxed italic">
+              “{t.quote}”
+            </p>
+          </div>
+
+          <footer class="mt-8 pt-5 border-t border-sand-300/70">
+            <p class="font-semibold text-sm text-ink-900">{t.author}</p>
+            <p class="text-xs text-ink-700 mt-0.5">{t.context}</p>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
