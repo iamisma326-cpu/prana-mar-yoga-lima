@@ -1,0 +1,144 @@
+---
+const navLinks = [
+  { label: 'El Santuario', href: '#filosofia' },
+  { label: 'Disciplinas', href: '#clases' },
+  { label: 'Guías', href: '#instructores' },
+  { label: 'Horarios', href: '#horarios' },
+  { label: 'Comunidad', href: '#testimonios' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-sand-50/85 backdrop-blur-md border-b border-sand-200/70"
+>
+  <!-- Barra superior informativa -->
+  <div class="bg-sage-900 text-sand-100 text-[11px] tracking-[0.14em] uppercase py-2 px-4 text-center">
+    <span>Bajada de Baños, Barranco · Lima, Perú</span>
+    <span class="mx-2 opacity-40">|</span>
+    <a href="#contacto" class="underline decoration-terracotta-400 underline-offset-4 hover:text-terracotta-400 transition-colors">
+      Semana introductoria ilimitada por S/ 89
+    </a>
+  </div>
+
+  <div class="editorial-container">
+    <nav class="flex items-center justify-between h-20" aria-label="Navegación principal">
+      <!-- Logo -->
+      <a href="#inicio" class="group flex items-center gap-3 focus:outline-none">
+        <span class="w-10 h-10 rounded-full bg-sand-200/80 border border-sand-300 flex items-center justify-center text-terracotta-600 group-hover:bg-terracotta-500 group-hover:text-sand-50 transition-colors duration-300">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3C9 8 6 12 6 16a6 6 0 0012 0c0-4-3-8-6-13z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 22c-5 0-9-3-10-8 4 0 7 2 10 8zm0 0c5 0 9-3 10-8-4 0-7 2-10 8z" />
+          </svg>
+        </span>
+        <div class="flex flex-col">
+          <span class="font-serif text-2xl sm:text-[26px] font-semibold tracking-tight leading-none text-ink-900">
+            Prana <span class="italic font-normal text-terracotta-600">&amp;</span> Mar
+          </span>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-ink-700 mt-0.5">
+            Barranco · Lima
+          </span>
+        </div>
+      </a>
+
+      <!-- Enlaces Desktop -->
+      <ul class="hidden lg:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-sm font-medium text-ink-800 hover:text-terracotta-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-terracotta-500 hover:after:w-full after:transition-all after:duration-300"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Acciones Desktop -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a
+          href="#horarios"
+          class="text-xs uppercase tracking-[0.18em] font-semibold text-ink-800 hover:text-terracotta-600 px-3 py-2 transition-colors"
+        >
+          Ver Horarios
+        </a>
+        <a href="#contacto" class="btn-primary !py-2.5 !px-5 text-xs uppercase tracking-[0.14em]">
+          Reservar Mat
+        </a>
+      </div>
+
+      <!-- Botón Menú Móvil -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="lg:hidden inline-flex items-center justify-center p-2.5 rounded-full border border-sand-300 text-ink-900 hover:bg-sand-100 focus:outline-none"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Abrir menú de navegación"
+      >
+        <svg id="icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h11" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Panel Móvil -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden bg-sand-50 border-b border-sand-300 px-6 pt-4 pb-8 shadow-soft"
+  >
+    <ul class="flex flex-col space-y-3">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="mobile-nav-link block py-2 font-serif text-2xl text-ink-900 hover:text-terracotta-600 border-b border-sand-200/70"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <a href="#contacto" class="mobile-nav-link btn-primary w-full text-center">
+        Reservar clase de prueba (S/ 35)
+      </a>
+      <a href="#horarios" class="mobile-nav-link btn-outline w-full text-center">
+        Explorar horarios
+      </a>
+    </div>
+    <p class="mt-5 text-xs text-ink-700 text-center">
+      Jr. Domeyer 248, Barranco · A 2 cuadras del Malecón Osma
+    </p>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function toggleMenu(forceClose = false) {
+    if (!menuBtn || !mobileMenu || !iconOpen || !iconClose) return;
+    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    const nextState = forceClose ? false : !isExpanded;
+
+    menuBtn.setAttribute('aria-expanded', String(nextState));
+    mobileMenu.classList.toggle('hidden', !nextState);
+    iconOpen.classList.toggle('hidden', nextState);
+    iconClose.classList.toggle('hidden', !nextState);
+  }
+
+  menuBtn?.addEventListener('click', () => toggleMenu());
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => toggleMenu(true));
+  });
+</script>
