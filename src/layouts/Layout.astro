@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Prana & Mar | Estudio de Yoga, Sonido y Bienestar en Barranco, Lima',
+  description = 'Un santuario contemporáneo frente al Pacífico en Barranco, Lima. Clases de Vinyasa, Hatha, Yin Yoga, Breathwork y Baños de Sonido en grupos reducidos.',
+} = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const faviconHref = `${baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'}favicon.svg`;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FAF7F2" />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+
+    <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-sand-50 text-ink-900 antialiased selection:bg-terracotta-500 selection:text-sand-50 overflow-x-hidden">
+    <a
+      href="#contenido-principal"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-sage-900 focus:px-5 focus:py-2.5 focus:text-sm focus:text-sand-50"
+    >
+      Saltar al contenido principal
+    </a>
+    <slot />
+  </body>
+</html>
