@@ -1,0 +1,100 @@
+---
+const instructors = [
+  {
+    name: 'Valeria Miró Quesada',
+    role: 'Fundadora · E-RYT 500 Vinyasa & Somática',
+    formation: 'Formada en Mysore (India) y Lisboa',
+    bio: 'Bailarina contemporánea y terapeuta corporal. Sus clases entrelazan fluidez orgánica, biomecánica respetuosa y filosofía no-dual aplicada a la vida cotidiana.',
+    quote: '“La postura empieza cuando dejas de forzar y comienzas a escuchar.”',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'Mateo Ríos-Belaunde',
+    role: 'Guía de Hatha Tradicional & Pranayama',
+    formation: 'Certificado en Rishikesh · 600 hrs',
+    bio: 'Biólogo marino y practicante de apnea en la costa peruana. Especialista en fisiología respiratoria, regulación vagal y alineación precisa con soportes.',
+    quote: '“Quien aprende a gobernar su exhalación, encuentra calma en cualquier tormenta.”',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'Camila Fujimori-Sato',
+    role: 'Yin Yoga, Medicina China & Sonoterapia',
+    formation: 'Especialista en Fascia & Acústica Sagrada',
+    bio: 'Integra los meridianos de la medicina tradicional oriental con paisajes sonoros de cuencos de cuarzo e instrumentos andinos para desbloquear el estrés crónico.',
+    quote: '“En la quietud del Yin descubrimos el espacio que el ruido diario nos roba.”',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'Sebastián Alarco',
+    role: 'Ashtanga Vinyasa & Movilidad Consciente',
+    formation: 'RYT 500 · Anatomía del Movimiento',
+    bio: 'Enfocado en construir articulaciones resilientes, transiciones conscientes y una práctica matutina que cultive disciplina amable sin rigidez mental.',
+    quote: '“La constancia suave transforma más que el esfuerzo intenso de un solo día.”',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
+  },
+];
+---
+
+<section id="instructores" class="py-24 md:py-32 bg-sage-900 text-sand-50 relative overflow-hidden">
+  <!-- Decoración orgánica de fondo -->
+  <div
+    class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[50rem] h-[25rem] rounded-full bg-sage-700/25 blur-3xl"
+    aria-hidden="true"
+  ></div>
+
+  <div class="editorial-container relative z-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <div class="max-w-2xl reveal-up">
+        <span class="inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.22em] font-semibold text-terracotta-400">
+          <span class="inline-block w-6 h-[1px] bg-terracotta-400"></span>
+          Nuestros Guías
+        </span>
+        <h2 class="mt-3 font-serif text-4xl sm:text-5xl lg:text-6xl text-sand-50 leading-[1.08]">
+          Maestros que enseñan desde la <span class="italic font-normal text-terracotta-400">experiencia viva</span>.
+        </h2>
+      </div>
+      <p class="reveal-up text-sm sm:text-base text-sand-200 max-w-md">
+        Cada profesor en Prana &amp; Mar cuenta con más de 500 horas de formación certificada e integra anatomía moderna con respeto por la tradición.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+      {instructors.map((inst) => (
+        <article class="instructor-card group bg-sage-800/80 border border-sage-700 rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:border-terracotta-400/60">
+          <div>
+            <div class="relative aspect-[4/5] overflow-hidden bg-sage-900">
+              <img
+                src={inst.image}
+                alt={`Retrato de ${inst.name}, profesor de yoga en Prana & Mar Lima`}
+                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-sage-900 via-sage-900/20 to-transparent"></div>
+              <div class="absolute bottom-3 left-4 right-4">
+                <span class="inline-block rounded-full bg-sand-50/15 backdrop-blur-md border border-sand-100/20 px-3 py-1 text-[11px] text-sand-100">
+                  {inst.formation}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-serif text-2xl font-semibold text-sand-50">{inst.name}</h3>
+              <p class="text-xs uppercase tracking-[0.14em] text-terracotta-400 mt-1 font-medium">
+                {inst.role}
+              </p>
+              <p class="mt-3 text-sm text-sand-200 leading-relaxed">
+                {inst.bio}
+              </p>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-3 border-t border-sage-700/80">
+            <p class="font-serif italic text-base text-sand-100">
+              {inst.quote}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
