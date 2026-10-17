@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAF7F2;
+    color: #1C1917;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::selection {
+    background-color: #C0603E;
+    color: #FAF7F2;
+  }
+}
+
+@layer components {
+  .editorial-container {
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.22em] font-semibold text-terracotta-600;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply inline-block w-6 h-[1px] bg-terracotta-500;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-sage-800 px-7 py-3.5 text-sm font-medium text-sand-50 transition-all duration-300 hover:bg-terracotta-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-800/25 bg-transparent px-7 py-3.5 text-sm font-medium text-ink-900 transition-all duration-300 hover:border-ink-900 hover:bg-sand-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink-800 focus-visible:ring-offset-2;
+  }
+}
+
+/* Textura cálida editorial sutil */
+.bg-grain {
+  background-image: radial-gradient(rgba(28, 25, 23, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
