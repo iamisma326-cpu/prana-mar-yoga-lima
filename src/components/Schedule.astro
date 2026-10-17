@@ -1,0 +1,216 @@
+---
+const days = [
+  { id: 'lunes', label: 'Lunes' },
+  { id: 'martes', label: 'Martes' },
+  { id: 'miercoles', label: 'Miércoles' },
+  { id: 'jueves', label: 'Jueves' },
+  { id: 'viernes', label: 'Viernes' },
+  { id: 'sabado', label: 'Sábado' },
+  { id: 'domingo', label: 'Domingo' },
+];
+
+const scheduleItems = [
+  // Lunes
+  { day: 'lunes', time: '07:00 – 08:15', title: 'Vinyasa Krama Despertar', teacher: 'Sebastián Alarco', room: 'Sala Sol (2do piso)', spots: '4 cupos libres', tag: 'Energizante' },
+  { day: 'lunes', time: '09:30 – 10:30', title: 'Hatha Alineación Consciente', teacher: 'Mateo Ríos-Belaunde', room: 'Sala Patio', spots: '6 cupos libres', tag: 'Todos los niveles' },
+  { day: 'lunes', time: '18:30 – 19:45', title: 'Vinyasa Flow & Pranayama', teacher: 'Valeria Miró Quesada', room: 'Sala Sol (2do piso)', spots: 'Últimos 2 cupos', tag: 'Popular' },
+  { day: 'lunes', time: '20:00 – 21:15', title: 'Yin Yoga a la luz de las velas', teacher: 'Camila Fujimori-Sato', room: 'Sala Patio', spots: '5 cupos libres', tag: 'Restaurativo' },
+
+  // Martes
+  { day: 'martes', time: '06:45 – 08:00', title: 'Ashtanga Guiado & Movilidad', teacher: 'Sebastián Alarco', room: 'Sala Sol (2do piso)', spots: '5 cupos libres', tag: 'Fuerza' },
+  { day: 'martes', time: '10:00 – 11:00', title: 'Yoga Suave & Columna Sana', teacher: 'Mateo Ríos-Belaunde', room: 'Sala Patio', spots: '7 cupos libres', tag: 'Principiantes' },
+  { day: 'martes', time: '18:30 – 19:30', title: 'Hatha Vinyasa Sunset', teacher: 'Valeria Miró Quesada', room: 'Sala Sol (2do piso)', spots: '3 cupos libres', tag: 'Fluidez' },
+  { day: 'martes', time: '19:45 – 21:00', title: 'Pranayama & Cuencos de Cuarzo', teacher: 'Camila Fujimori-Sato', room: 'Sala Patio', spots: 'Últimos 3 cupos', tag: 'Sonoterapia' },
+
+  // Miércoles
+  { day: 'miercoles', time: '07:00 – 08:15', title: 'Vinyasa Krama & Core', teacher: 'Valeria Miró Quesada', room: 'Sala Sol (2do piso)', spots: '4 cupos libres', tag: 'Energizante' },
+  { day: 'miercoles', time: '09:30 – 10:30', title: 'Hatha Alineación con Props', teacher: 'Mateo Ríos-Belaunde', room: 'Sala Patio', spots: '8 cupos libres', tag: 'Todos los niveles' },
+  { day: 'miercoles', time: '18:30 – 19:45', title: 'Slow Flow & Caderas Libres', teacher: 'Sebastián Alarco', room: 'Sala Sol (2do piso)', spots: '5 cupos libres', tag: 'Movilidad' },
+  { day: 'miercoles', time: '20:00 – 21:15', title: 'Yin Yoga & Meridianos', teacher: 'Camila Fujimori-Sato', room: 'Sala Patio', spots: '4 cupos libres', tag: 'Restaurativo' },
+
+  // Jueves
+  { day: 'jueves', time: '06:45 – 08:00', title: 'Ashtanga & Respiración Ujjayi', teacher: 'Sebastián Alarco', room: 'Sala Sol (2do piso)', spots: '6 cupos libres', tag: 'Fuerza' },
+  { day: 'jueves', time: '10:00 – 11:15', title: 'Hatha Somático & Calma', teacher: 'Valeria Miró Quesada', room: 'Sala Patio', spots: '5 cupos libres', tag: 'Suave' },
+  { day: 'jueves', time: '18:30 – 19:45', title: 'Vinyasa Creativo al Atardecer', teacher: 'Valeria Miró Quesada', room: 'Sala Sol (2do piso)', spots: 'Últimos 2 cupos', tag: 'Popular' },
+  { day: 'jueves', time: '20:00 – 21:15', title: 'Baño de Gong & Yoga Nidra', teacher: 'Camila Fujimori-Sato', room: 'Sala Patio', spots: '3 cupos libres', tag: 'Sueño Profundo' },
+
+  // Viernes
+  { day: 'viernes', time: '07:00 – 08:15', title: 'Vinyasa Mandala Flow', teacher: 'Valeria Miró Quesada', room: 'Sala Sol (2do piso)', spots: '5 cupos libres', tag: 'Energizante' },
+  { day: 'viernes', time: '09:30 – 10:30', title: 'Hatha Tradicional & Pranayama', teacher: 'Mateo Ríos-Belaunde', room: 'Sala Patio', spots: '7 cupos libres', tag: 'Clásico' },
+  { day: 'viernes', time: '18:00 – 19:30', title: 'Yin & Yang + Infusión de Cacao', teacher: 'Camila & Mateo', room: 'Sala Principal', spots: 'Últimos 4 cupos', tag: 'Especial Viernes' },
+
+  // Sábado
+  { day: 'sabado', time: '08:30 – 09:45', title: 'Vinyasa Frente a la Brisa', teacher: 'Sebastián Alarco', room: 'Sala Sol (2do piso)', spots: '3 cupos libres', tag: 'Fin de Semana' },
+  { day: 'sabado', time: '10:15 – 11:30', title: 'Hatha para Todos + Té de Muña', teacher: 'Mateo Ríos-Belaunde', room: 'Sala Patio', spots: '5 cupos libres', tag: 'Comunidad' },
+  { day: 'sabado', time: '17:00 – 18:30', title: 'Inmersión Sonora: Cuencos & Voz', teacher: 'Camila Fujimori-Sato', room: 'Sala Principal', spots: 'Últimos 2 cupos', tag: 'Ceremonia' },
+
+  // Domingo
+  { day: 'domingo', time: '09:30 – 10:45', title: 'Slow Vinyasa & Meditación', teacher: 'Valeria Miró Quesada', room: 'Sala Sol (2do piso)', spots: '6 cupos libres', tag: 'Dominical' },
+  { day: 'domingo', time: '17:30 – 19:00', title: 'Yin Restaurativo & Intención Semanal', teacher: 'Camila Fujimori-Sato', room: 'Sala Patio', spots: '4 cupos libres', tag: 'Renovación' },
+];
+---
+
+<section id="horarios" class="py-24 md:py-32 bg-sand-100/80 border-t border-sand-200">
+  <div class="editorial-container">
+    <div class="text-center max-w-2xl mx-auto reveal-up">
+      <span class="eyebrow justify-center">Horarios Semanales</span>
+      <h2 class="mt-3 font-serif text-4xl sm:text-5xl text-ink-900 leading-tight">
+        Encuentra tu momento en la <span class="italic font-normal text-terracotta-600">semana</span>.
+      </h2>
+      <p class="mt-4 text-sm sm:text-base text-ink-700">
+        Abierto los 7 días de la semana. Llega 10 minutos antes; nosotros te esperamos con tu mat listo y agua filtrada con infusiones botánicas.
+      </p>
+    </div>
+
+    <!-- Selector de días interactivo -->
+    <div
+      class="mt-10 flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 no-scrollbar reveal-up"
+      role="tablist"
+      aria-label="Filtrar horario por día de la semana"
+    >
+      {days.map((d, index) => (
+        <button
+          type="button"
+          role="tab"
+          aria-selected={index === 0 ? 'true' : 'false'}
+          data-day-btn={d.id}
+          class={`day-tab shrink-0 rounded-full px-5 py-2.5 text-xs uppercase tracking-[0.16em] font-semibold transition-all duration-300 ${
+            index === 0
+              ? 'bg-sage-800 text-sand-50 shadow-sm'
+              : 'bg-sand-50 text-ink-800 border border-sand-300 hover:border-ink-800'
+          }`}
+        >
+          {d.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Lista de sesiones -->
+    <div class="mt-8 max-w-4xl mx-auto space-y-3.5">
+      {scheduleItems.map((item) => (
+        <div
+          data-day-row={item.day}
+          class={`schedule-row rounded-2xl bg-sand-50 border border-sand-300/90 p-5 sm:p-6 transition-all duration-300 hover:border-terracotta-500 hover:shadow-card ${
+            item.day === 'lunes' ? 'block' : 'hidden'
+          }`}
+        >
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-7">
+              <div class="sm:w-36 shrink-0">
+                <span class="font-serif text-xl sm:text-2xl font-semibold text-ink-900 block">
+                  {item.time}
+                </span>
+                <span class="text-xs text-ink-700">{item.room}</span>
+              </div>
+
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 class="font-serif text-2xl font-semibold text-ink-900">
+                    {item.title}
+                  </h3>
+                  <span class="rounded-full bg-sand-200/90 px-2.5 py-0.5 text-[11px] font-medium text-ink-800">
+                    {item.tag}
+                  </span>
+                </div>
+                <p class="text-xs sm:text-sm text-ink-700 mt-1">
+                  Guía: <strong class="font-medium text-ink-900">{item.teacher}</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between sm:justify-end gap-4 pt-3 sm:pt-0 border-t sm:border-t-0 border-sand-200">
+              <span class="text-xs font-medium text-sage-700 bg-sage-50 border border-sage-100 px-3 py-1 rounded-full">
+                {item.spots}
+              </span>
+              <a
+                href="#contacto"
+                data-select-class={`${item.title} (${item.time})`}
+                class="select-class-btn inline-flex items-center justify-center rounded-full bg-ink-900 px-4 py-2 text-xs uppercase tracking-[0.14em] font-medium text-sand-50 hover:bg-terracotta-600 transition-colors"
+              >
+                Reservar
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Planes / Membresías resumen -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="reveal-card rounded-3xl bg-sand-50 border border-sand-300 p-7 flex flex-col justify-between">
+        <div>
+          <span class="text-xs uppercase tracking-[0.18em] text-terracotta-600 font-semibold">Nuevos Alumnos</span>
+          <h3 class="mt-2 font-serif text-2xl font-semibold text-ink-900">Semana Introductoria</h3>
+          <p class="mt-1 text-xs text-ink-700">7 días consecutivos de acceso ilimitado a todas las disciplinas.</p>
+          <p class="mt-5 font-serif text-4xl font-semibold text-ink-900">
+            S/ 89 <span class="text-xs font-sans font-normal text-ink-700">/ único pago</span>
+          </p>
+        </div>
+        <a href="#contacto" data-select-class="Pack Semana Introductoria (S/ 89)" class="select-class-btn mt-6 btn-outline w-full text-center !py-2.5 text-xs uppercase tracking-[0.15em]">
+          Solicitar Pack Intro
+        </a>
+      </div>
+
+      <div class="reveal-card rounded-3xl bg-sage-900 text-sand-50 border border-sage-700 p-7 flex flex-col justify-between relative shadow-soft">
+        <span class="absolute top-4 right-4 rounded-full bg-terracotta-500 px-3 py-0.5 text-[10px] uppercase tracking-[0.16em] font-semibold text-sand-50">
+          Más elegido
+        </span>
+        <div>
+          <span class="text-xs uppercase tracking-[0.18em] text-terracotta-400 font-semibold">Práctica Constante</span>
+          <h3 class="mt-2 font-serif text-2xl font-semibold">Paquete 8 Clases</h3>
+          <p class="mt-1 text-xs text-sand-200">Válido por 45 días. Incluye préstamo de mat Manduka Pro y toalla.</p>
+          <p class="mt-5 font-serif text-4xl font-semibold">
+            S/ 340 <span class="text-xs font-sans font-normal text-sand-200">/ S/ 42.5 por clase</span>
+          </p>
+        </div>
+        <a href="#contacto" data-select-class="Paquete 8 Clases Mensual (S/ 340)" class="select-class-btn mt-6 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-sand-50 py-2.5 text-center text-xs uppercase tracking-[0.15em] font-medium transition-colors">
+          Elegir 8 Clases
+        </a>
+      </div>
+
+      <div class="reveal-card rounded-3xl bg-sand-50 border border-sand-300 p-7 flex flex-col justify-between">
+        <div>
+          <span class="text-xs uppercase tracking-[0.18em] text-terracotta-600 font-semibold">Libertad Total</span>
+          <h3 class="mt-2 font-serif text-2xl font-semibold text-ink-900">Membresía Mensual</h3>
+          <p class="mt-1 text-xs text-ink-700">Clases ilimitadas + 1 invitado gratis al mes + 15% dcto. en talleres.</p>
+          <p class="mt-5 font-serif text-4xl font-semibold text-ink-900">
+            S/ 460 <span class="text-xs font-sans font-normal text-ink-700">/ mes</span>
+          </p>
+        </div>
+        <a href="#contacto" data-select-class="Membresía Mensual Ilimitada (S/ 460)" class="select-class-btn mt-6 btn-outline w-full text-center !py-2.5 text-xs uppercase tracking-[0.15em]">
+          Elegir Ilimitado
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const dayButtons = document.querySelectorAll<HTMLButtonElement>('[data-day-btn]');
+  const dayRows = document.querySelectorAll<HTMLElement>('[data-day-row]');
+
+  dayButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedDay = btn.getAttribute('data-day-btn');
+      if (!selectedDay) return;
+
+      dayButtons.forEach((b) => {
+        const isActive = b === btn;
+        b.setAttribute('aria-selected', String(isActive));
+        b.classList.toggle('bg-sage-800', isActive);
+        b.classList.toggle('text-sand-50', isActive);
+        b.classList.toggle('shadow-sm', isActive);
+        b.classList.toggle('bg-sand-50', !isActive);
+        b.classList.toggle('text-ink-800', !isActive);
+        b.classList.toggle('border', !isActive);
+        b.classList.toggle('border-sand-300', !isActive);
+      });
+
+      dayRows.forEach((row) => {
+        const matches = row.getAttribute('data-day-row') === selectedDay;
+        row.classList.toggle('hidden', !matches);
+        row.classList.toggle('block', matches);
+      });
+    });
+  });
+</script>
