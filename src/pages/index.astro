@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Philosophy from '../components/Philosophy.astro';
+import Classes from '../components/Classes.astro';
+import Instructors from '../components/Instructors.astro';
+import Schedule from '../components/Schedule.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+  <main id="contenido-principal">
+    <Hero />
+    <Philosophy />
+    <Classes />
+    <Instructors />
+    <Schedule />
+    <Testimonials />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Respeto estricto por prefers-reduced-motion usando gsap.matchMedia()
+  const mm = gsap.matchMedia();
+
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    // 1. Entrada editorial del Hero
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl
+      .from('.hero-animate', {
+        y: 32,
+        opacity: 0,
+        duration: 0.95,
+        stagger: 0.12,
+      })
+      .from(
+        '.hero-image-wrap',
+        {
+          scale: 0.96,
+          opacity: 0,
+          duration: 1.1,
+        },
+        '-=0.7'
+      )
+      .from(
+        '.hero-floating-card',
+        {
+          y: 24,
+          opacity: 0,
+          duration: 0.8,
+        },
+        '-=0.5'
+      );
+
+    // 2. Parallax suave en la imagen del Hero
+    gsap.to('.hero-parallax-img', {
+      yPercent: -10,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#inicio',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+
+    // 3. Bloques de texto y encabezados (.reveal-up)
+    const revealElements = gsap.utils.toArray<HTMLElement>('.reveal-up');
+    revealElements.forEach((el) => {
+      gsap.from(el, {
+        y: 36,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 86%',
+          toggleActions: 'play none none none',
+        },
+      });
+    });
+
+    // 4. Tarjetas de disciplinas (.class-card)
+    ScrollTrigger.batch('.class-card', {
+      start: 'top 85%',
+      onEnter: (batch) => {
+        gsap.from(batch, {
+          y: 44,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.15,
+          ease: 'power3.out',
+          overwrite: true,
+        });
+      },
+      once: true,
+    });
+
+    // 5. Tarjetas de instructores (.instructor-card)
+    ScrollTrigger.batch('.instructor-card', {
+      start: 'top 85%',
+      onEnter: (batch) => {
+        gsap.from(batch, {
+          y: 40,
+          opacity: 0,
+          duration: 0.85,
+          stagger: 0.12,
+          ease: 'power3.out',
+          overwrite: true,
+        });
+      },
+      once: true,
+    });
+
+    // 6. Tarjetas generales (.reveal-card: pilares, membresías, testimonios)
+    ScrollTrigger.batch('.reveal-card', {
+      start: 'top 88%',
+      onEnter: (batch) => {
+        gsap.from(batch, {
+          y: 32,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power2.out',
+          overwrite: true,
+        });
+      },
+      once: true,
+    });
+
+    // 7. Parallax en imagen de Filosofía
+    gsap.to('.parallax-img', {
+      yPercent: -12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#filosofia',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  });
+</script>
