@@ -1,0 +1,66 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-ink-900 text-sand-100 pt-20 pb-12 border-t border-ink-800">
+  <div class="editorial-container">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-ink-700/60">
+      <div class="md:col-span-5 space-y-4">
+        <a href="#inicio" class="inline-block font-serif text-3xl font-semibold tracking-tight text-sand-50">
+          Prana <span class="italic font-normal text-terracotta-400">&amp;</span> Mar
+        </a>
+        <p class="text-sm text-sand-300 max-w-sm leading-relaxed">
+          Estudio de yoga, respiración consciente y sonoterapia frente a la brisa de Barranco, Lima. Un espacio para habitar el cuerpo con calma, belleza y presencia.
+        </p>
+        <p class="text-xs uppercase tracking-[0.2em] text-terracotta-400 pt-2">
+          Jr. Domeyer 248 · Barranco · Lima, Perú
+        </p>
+      </div>
+
+      <div class="md:col-span-3 space-y-3">
+        <h3 class="text-xs uppercase tracking-[0.2em] text-sand-300 font-semibold">Explorar</h3>
+        <ul class="space-y-2.5 text-sm text-sand-200">
+          <li><a href="#filosofia" class="hover:text-terracotta-400 transition-colors">El Santuario</a></li>
+          <li><a href="#clases" class="hover:text-terracotta-400 transition-colors">Disciplinas y Clases</a></li>
+          <li><a href="#instructores" class="hover:text-terracotta-400 transition-colors">Nuestros Guías</a></li>
+          <li><a href="#horarios" class="hover:text-terracotta-400 transition-colors">Horarios y Membresías</a></li>
+          <li><a href="#testimonios" class="hover:text-terracotta-400 transition-colors">Comunidad</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-3">
+        <h3 class="text-xs uppercase tracking-[0.2em] text-sand-300 font-semibold">Cartas de Calma (Newsletter)</h3>
+        <p class="text-xs text-sand-300 leading-relaxed">
+          Recibe una vez al mes nuestra selección de playlists para practicar, talleres de luna llena en Barranco y lecturas de bienestar.
+        </p>
+        <form
+          id="newsletter-form"
+          class="pt-2 flex flex-col sm:flex-row gap-2"
+          onsubmit="event.preventDefault(); this.querySelector('button').textContent = '¡Suscrito con éxito!';"
+        >
+          <label for="newsletter-email" class="sr-only">Tu correo electrónico</label>
+          <input
+            id="newsletter-email"
+            type="email"
+            required
+            placeholder="tucorreo@ejemplo.pe"
+            class="w-full rounded-full bg-ink-800 border border-ink-700 px-4 py-2.5 text-xs text-sand-50 placeholder:text-sand-400 focus:border-terracotta-400 focus:outline-none"
+          />
+          <button
+            type="submit"
+            class="shrink-0 rounded-full bg-terracotta-600 hover:bg-terracotta-500 px-5 py-2.5 text-xs uppercase tracking-[0.14em] font-medium text-sand-50 transition-colors"
+          >
+            Unirme
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand-400">
+      <p>© {currentYear} Prana &amp; Mar Estudio de Bienestar S.A.C. · Todos los derechos reservados.</p>
+      <div class="flex items-center gap-6">
+        <a href="#inicio" class="hover:text-sand-100 transition-colors">Volver arriba ↑</a>
+      </div>
+    </div>
+  </div>
+</footer>
