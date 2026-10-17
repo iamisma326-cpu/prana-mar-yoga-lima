@@ -1,0 +1,139 @@
+---
+const classesList = [
+  {
+    id: 'vinyasa',
+    title: 'Vinyasa Krama & Fluidez',
+    subtitle: 'Energía, calor interno y foco mental',
+    intensity: 'Intensidad Media – Alta',
+    duration: '60 – 75 min',
+    level: 'Todos los niveles',
+    description:
+      'Secuencias creativas donde cada movimiento nace de una inhalación o exhalación consciente. Ideal para soltar la tensión postural de oficina y despertar fuerza orgánica.',
+    benefits: ['Movilidad articular profunda', 'Fuerza funcional sin rigidez', 'Claridad mental sostenida'],
+    image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    id: 'hatha',
+    title: 'Hatha Alineación Consciente',
+    subtitle: 'Precisión anatómica y permanencia',
+    intensity: 'Intensidad Suave – Media',
+    duration: '60 min',
+    level: 'Principiantes e Intermedios',
+    description:
+      'Permanencia serena en las posturas (asanas) utilizando bloques de corcho, cinturones y bolsters para adaptar la práctica a la estructura única de tu cuerpo.',
+    benefits: ['Ideal para empezar desde cero', 'Corrección postural saludable', 'Uso guiado de props'],
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    id: 'yin',
+    title: 'Yin Yoga & Restaurativo',
+    subtitle: 'Quietud profunda a la luz de las velas',
+    intensity: 'Intensidad Suave',
+    duration: '75 min',
+    level: 'Todos los niveles',
+    description:
+      'Posturas pasivas en suelo sostenidas entre 3 y 5 minutos para hidratar tejidos conectivos, liberar fascia profunda y preparar un descanso reparador.',
+    benefits: ['Reduce el cortisol y el insomnio', 'Alivio lumbar y de caderas', 'Aromaterapia con lavanda andina'],
+    image: 'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    id: 'sonido',
+    title: 'Pranayama & Baño de Sonido',
+    subtitle: 'Cuencos de cuarzo, gong y respiración',
+    intensity: 'Meditativo / Inmersivo',
+    duration: '75 min',
+    level: 'Sin experiencia previa',
+    description:
+      'Viaje acústico vibracional guiado con cuencos alquímicos de cuarzo, instrumentos prehispánicos y técnicas de respiración para armonizar ondas cerebrales.',
+    benefits: ['Regulación del sistema nervioso', 'Liberación emocional sutil', 'Descanso profundo inmediato'],
+    image: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=900&q=80',
+  },
+];
+---
+
+<section id="clases" class="py-24 md:py-32">
+  <div class="editorial-container">
+    <!-- Encabezado de sección -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <div class="max-w-2xl reveal-up">
+        <span class="eyebrow">Nuestras Disciplinas</span>
+        <h2 class="mt-3 font-serif text-4xl sm:text-5xl lg:text-6xl text-ink-900 leading-[1.08]">
+          Prácticas pensadas para cada <span class="italic font-normal text-terracotta-600">estación de tu día</span>.
+        </h2>
+      </div>
+      <p class="reveal-up text-sm sm:text-base text-ink-700 max-w-md">
+        Tanto si tomas tu primera clase como si llevas años sobre el mat, nuestros guías ofrecen variaciones respetuosas para cada cuerpo.
+      </p>
+    </div>
+
+    <!-- Grilla de clases -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+      {classesList.map((item, idx) => (
+        <article class="class-card group bg-sand-100/70 rounded-3xl overflow-hidden border border-sand-300/80 flex flex-col justify-between transition-all duration-500 hover:shadow-soft hover:border-terracotta-400/60">
+          <div>
+            <!-- Imagen con etiquetas -->
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-sand-200">
+              <img
+                src={item.image}
+                alt={item.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-sand-50/95 backdrop-blur-sm px-3.5 py-1 text-xs font-medium text-ink-900">
+                  {item.duration}
+                </span>
+                <span class="rounded-full bg-sage-800/90 backdrop-blur-sm px-3.5 py-1 text-xs font-medium text-sand-50">
+                  {item.intensity}
+                </span>
+              </div>
+              <span class="absolute bottom-4 right-5 font-serif text-3xl italic text-sand-50/90">
+                0{idx + 1}
+              </span>
+            </div>
+
+            <!-- Contenido -->
+            <div class="p-7 sm:p-8">
+              <p class="text-xs uppercase tracking-[0.18em] text-terracotta-600 font-semibold">
+                {item.subtitle}
+              </p>
+              <h3 class="mt-2 font-serif text-3xl text-ink-900 font-semibold">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-ink-700 leading-relaxed">
+                {item.description}
+              </p>
+
+              <ul class="mt-6 space-y-2 border-t border-sand-300/70 pt-5">
+                {item.benefits.map((benefit) => (
+                  <li class="flex items-center gap-2.5 text-xs sm:text-sm text-ink-800">
+                    <span class="w-1.5 h-1.5 rounded-full bg-terracotta-500 shrink-0"></span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pie de tarjeta -->
+          <div class="px-7 sm:px-8 pb-7 pt-2 flex items-center justify-between">
+            <span class="text-xs font-medium text-ink-700">
+              Nivel: <strong class="text-ink-900">{item.level}</strong>
+            </span>
+            <a
+              href="#contacto"
+              data-select-class={item.title}
+              class="select-class-btn inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] font-semibold text-sage-800 hover:text-terracotta-600 transition-colors"
+            >
+              <span>Reservar esta clase</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
